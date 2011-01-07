@@ -152,6 +152,7 @@ $time_start = getmicrotime(); //开始计时，这个是备选项
 	$rows_count4;
 	$rows_count5;
 	$rows_count6;
+	$extension_name=Array();
 	
 	//查询起始行位置 对数据进行分页显示
 	if($page_num<$page_count1)
@@ -164,7 +165,8 @@ $time_start = getmicrotime(); //开始计时，这个是备选项
 	  
 	  for($i=0;$i<$rows_count3;$i++){
 	     $file=$res[$i]['file'];
-			 $postfix=$res[$i]['postfix'];
+			 //$postfix=$res[$i]['postfix'];
+			 $extension_name[$i]=$res[$i]['postfix'];
 			 $pid=$res[$i]['pid'];
 			 $ipid=$res[$i]['ipid'];
 			 $id1='/';
@@ -211,7 +213,8 @@ $time_start = getmicrotime(); //开始计时，这个是备选项
 	    if($i<$rows_count4)
 	    {
 	     $file=$res[$i]['file'];
-			 $postfix=$res[$i]['postfix'];
+			 //$postfix=$res[$i]['postfix'];
+			 $extension_name[$i]=$res[$i]['postfix'];
 			 $pid=$res[$i]['pid'];
 			 $ipid=$res[$i]['ipid'];
 			 $id1='/';
@@ -262,7 +265,7 @@ $time_start = getmicrotime(); //开始计时，这个是备选项
 			 $id2=$result2[0]['site'];
 			 $id2.=$cat;
 			 $result[$i]="ftp://".$id2;
-
+       $extension_name[$i]="default";
 			 }
 
 	  }
@@ -301,6 +304,7 @@ $time_start = getmicrotime(); //开始计时，这个是备选项
 			 $id2=$result2[0]['site'];
 			 $id2.=$cat;
 			 $result[$i]="ftp://".$id2;
+			 $extension_name[$i]="default";
 	  }
 	}  
 
@@ -321,8 +325,9 @@ $time_start = getmicrotime(); //开始计时，这个是备选项
 				 $result[$i]= str_ireplace($newstr[$n],"<font color='#FF0000'>".$newstr[$n]."</font>",$result[$i]);
 
 			 }
+			 $ext_image=extension_image($extension_name[$i]);
 		 ?>	
-<li>		 <a href="<?php echo $href;?>"><?php echo $result[$i];?></a></li>
+<li>		 <IMG SRC="./images/<?php echo $ext_image; ?>"><a href="<?php echo $href;?>"><?php echo $result[$i];?></a></li>
 			<?php
 			  }
 			}
@@ -334,10 +339,13 @@ $time_start = getmicrotime(); //开始计时，这个是备选项
 				 
 				 $href=$result[$i];
 		 	 for($n=0;$n<count($newstr);$n++)   //应用FOR循环语句对分词后的词语进行描红
-				 $result[$i]= str_ireplace($newstr[$n],"<font color='#FF0000'>".$newstr[$n]."</font>",$result[$i]);
-
+				{ 
+					$result[$i]= str_ireplace($newstr[$n],"<font color='#FF0000'>".$newstr[$n]."</font>",$result[$i]);
+				}
+         
+         $ext_image=extension_image($extension_name[$i]);
 		 ?>	
-<li>		 <a href="<?php echo $href;?>"><?php echo $result[$i];?></a><br></li>
+<li>		 <IMG SRC="./images/<?php echo $ext_image; ?>"><a href="<?php echo $href;?>"><?php echo $result[$i];?></a><br></li>
 			<?php  
 			}
 	}	
@@ -353,8 +361,9 @@ $time_start = getmicrotime(); //开始计时，这个是备选项
 				$href=$result[$i];
 				 $result[$i]= str_ireplace($newstr[$n],"<font color='#FF0000'>".$newstr[$n]."</font>",$result[$i]);
 			 }
+			 $ext_image=extension_image($extension_name[$i]);
 		 ?>	
-		<li> <a href="<?php echo $href;?>"><?php echo $result[$i];?></a><br></li>
+		<li> <IMG SRC="./images/<?php echo $ext_image; ?>"><a href="<?php echo $href;?>"><?php echo $result[$i];?></a><br></li>
 			<?php  
 			}
 		}	

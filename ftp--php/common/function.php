@@ -159,4 +159,53 @@ function gl1($tt){		//过滤标点符号
 	$str=str_replace($str,'',$tt);
 	return $str;
 }
+function extension_image($hh){
+   switch($hh)
+  {
+  	case app:
+  	 $hh="app.gif";
+  	 break;
+  	case doc:
+  	 $hh="doc.gif";
+  	 break;
+  	case app:
+  	 $hh="app.gif";
+  	case bmp:
+  	 $hh="bmp.gif";
+  	case chm:
+  	 $hh="chm.gif";
+  	case dll:
+  	 $hh="dll.gif";
+  	case down:
+  	 $hh="down.gif";
+  	case exe:
+  	 $hh="exe.gif";
+  	case gif:
+  	 $hh="gif.gif";
+  	case ftp:
+  	 $hh="ftp.gif";
+  	case html:
+  	 $hh="html.gif";
+  	case img:
+  	 $hh="img.gif";
+  	case info:
+  	 $hh="info.gif";
+  	case mp3:
+  	 $hh="mp3.gif";
+  	case rar:
+  	 $hh="rar.gif";
+  	case swf:
+  	 $hh="swf.gif";
+  	case txt:
+  	 $hh="txt.gif";
+  	case wav:
+  	 $hh="wav.gif";
+  	case avi:
+  	 $hh="avi.gif";
+  	default:
+  	 $hh="file.gif";
+  	 
+  }
+  return $hh;
+}
 ?>
